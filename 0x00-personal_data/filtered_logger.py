@@ -79,3 +79,24 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         host, user, password, database
     )
     return connection
+
+
+def main() -> None:
+    """
+        obtain a database connection using get_db and retrieve all rows
+        in the users table and display each row under a filtered format
+    """
+    db = get_db()
+
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT* FROM users;")
+    result = cursor.fetchall()
+    fields = ['name'
+              'email',
+              'phone',
+              'ssn',
+              'password']
+    for row in result:
+        print(filter_datum(fields, '***', str(row), ';'))
+    cursor.close()
+    db.close()
