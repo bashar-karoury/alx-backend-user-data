@@ -15,6 +15,5 @@ def filter_datum(fields: List[str],
     """
     for field in fields:
         pattern = rf"(?<=\b{field}\b=).*?(?=,|\.|(?={separator}))"
-        # Perform the replacement
         message = re.sub(pattern, redaction, message)
     return message
