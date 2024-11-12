@@ -24,7 +24,13 @@ class Auth:
     def authorization_header(self, request=None) -> str:
         """ returns None - request will be the Flask request object
         """
-        return None
+        # If request is None, returns None
+        # If request doesn’t contain the header key Authorization, returns None
+        # Otherwise, return the value of the header request Authorization
+        if not request:
+            return None
+        header = request.headers.get('Authorization')
+        return header
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ returns None - request will be the Flask request object
