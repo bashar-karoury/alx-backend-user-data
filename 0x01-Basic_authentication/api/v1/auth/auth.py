@@ -15,9 +15,9 @@ class Auth:
         if not path:
             return True
         slashed_path = path + '/' if path[-1] != '/' else path
-        if slashed_path not in excluded_paths:
-            return True
-        return False
+        if slashed_path in excluded_paths:
+            return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """ returns None - request will be the Flask request object
