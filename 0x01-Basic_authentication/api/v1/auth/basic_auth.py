@@ -3,7 +3,7 @@
 basic auth module to manage API authentication
 """
 from flask import request
-from typing import List, TypeVar
+from typing import List, TypeVar, Tuple
 from api.v1.auth.auth import Auth
 
 
@@ -42,3 +42,23 @@ class BasicAuth(Auth):
         except (Exception):
             return None
         return result.decode('utf-8')
+
+    def extract_user_credentials(
+            self, decoded_base64_authorization_header: str) -> Tuple[str, str]:
+        """
+            returns the user email and password from the Base64 decoded value.
+        """
+
+        # This method must return 2 values
+        # Return None, None if parameter is None
+        # Return None, None if parameter is not a string
+        # Return None, None if parameter doesn’t contain ':'
+        # Otherwise, return the user email and the user password
+        if not decoded_base64_authorization_header:
+            return None, None
+        if type(decoded_base64_authorization_header) is not str:
+            return None, None
+        if decoded_base64_authorization_header.find(':') == -1:
+            return None, None
+        result = decoded_base64_authorization_header.split(':')
+        return result[0], result[1]
