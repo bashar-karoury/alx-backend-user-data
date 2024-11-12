@@ -14,6 +14,8 @@ class Auth:
         """
         if not path:
             return True
+        if len(excluded_paths) == 0:
+            return True
         slashed_path = path + '/' if path[-1] != '/' else path
         if slashed_path in excluded_paths:
             return False
