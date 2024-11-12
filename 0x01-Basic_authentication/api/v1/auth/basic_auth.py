@@ -18,7 +18,7 @@ class BasicAuth(Auth):
         # Return None if authorization_header doesn’t start by 'Basic '
         # Otherwise, return the value after Basic (after the space)
         # You can assume authorization_header contains only one Basic
-        if not authorization_header or type(authorization_header) is not 'str':
+        if not authorization_header or type(authorization_header) != str:
             return None
         if not authorization_header.startswith('Basic '):
             return None
