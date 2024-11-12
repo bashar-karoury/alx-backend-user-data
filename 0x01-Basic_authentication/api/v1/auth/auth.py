@@ -10,8 +10,13 @@ class Auth:
     """ Main class of Auth to managem authentication"""
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """ returns False
+        """ returns True if path is not one of excluded_paths, False otherwise
         """
+        if not path:
+            return True
+        slashed_path = path + '/' if path[-1] != '/' else path
+        if slashed_path not in excluded_paths:
+            return True
         return False
 
     def authorization_header(self, request=None) -> str:
