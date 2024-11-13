@@ -19,7 +19,7 @@ class Auth:
         slashed_path = path + '/' if path[-1] != '/' else path
         for excluded_path in excluded_paths:
             if excluded_path[-1] == '*':
-                if slashed_path.startswith(excluded_path[:-2]):
+                if slashed_path.startswith(excluded_path[:-1]):
                     return False
             if slashed_path == excluded_path:
                 return False
