@@ -55,6 +55,7 @@ def check_authenticaion() -> None:
         return
     if not auth.authorization_header(request):
         abort(401)
+    print("authorizing current user = ", auth.current_user(request))
     if not auth.current_user(request):
         abort(403)
 
