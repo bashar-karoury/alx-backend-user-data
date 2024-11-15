@@ -12,7 +12,7 @@ from models.user import User
 
 
 class SessionExpAuth(SessionAuth):
-    """ SessionExpAuth class to manage session with expiration authentication mechanism"""
+    """ SessionExpAuth class to manage session with exp auth mechanism"""
     user_id_by_session_id = {}
 
     def __init__(self):
