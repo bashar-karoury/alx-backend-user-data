@@ -79,6 +79,7 @@ class BasicAuth(Auth):
         if not user_pwd or type(user_pwd) is not str:
             return None
         users = User.search({"email": user_email})
+        print(f'found users {users}')
         # print('users: ', users)
         if not users:
             return None
@@ -101,4 +102,5 @@ class BasicAuth(Auth):
         # You must use extract_user_credentials
         usr_email, usr_pwd = self.extract_user_credentials(decoded_header)
         # You must use user_object_from_credentials
+        print(f'useremail: {usr_email}, userpwd: {usr_pwd}')
         return self.user_object_from_credentials(usr_email, usr_pwd)
