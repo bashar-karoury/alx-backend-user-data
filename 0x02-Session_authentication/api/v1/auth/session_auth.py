@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-session auth module to manage Session API authentication
+""" session auth module
 """
 from flask import request
 from typing import List, TypeVar, Tuple
