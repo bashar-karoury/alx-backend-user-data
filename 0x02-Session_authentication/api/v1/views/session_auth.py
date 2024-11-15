@@ -24,7 +24,7 @@ def login() -> str:
 
     # get user of this provided email
     match_users = User.search({'email': user_email})
-    user = match_users[0]
+    user = match_users[0] if match_users else None
     if not user:
         return jsonify({"error": "no user found for this email"}), 404
 
