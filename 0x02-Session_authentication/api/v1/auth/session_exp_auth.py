@@ -19,10 +19,8 @@ class SessionExpAuth(SessionAuth):
         """init method"""
 
         env_session_dur = os.getenv('SESSION_DURATION')
-        if not env_session_dur:
-            self.session_duration = int(env_session_dur)
         try:
-            int(env_session_dur)
+            self.session_duration = int(env_session_dur)
         except Exception:
             self.session_duration = 0
 
@@ -33,7 +31,7 @@ class SessionExpAuth(SessionAuth):
             return None
         session_dictionary = {}
         session_dictionary['user_id'] = user_id
-        session_dictionary['created_at'] = datetime.datetime.now()
+        session_dictionary['created_at'] = datetime.now()
         SessionExpAuth.user_id_by_session_id[session_id] = session_dictionary
         return session_id
 
