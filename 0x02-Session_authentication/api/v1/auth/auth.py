@@ -27,7 +27,7 @@ class Auth:
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ returns None - request will be the Flask request object
+        """ returns the value of the header request Authorization
         """
         # If request is None, returns None
         # If request doesn’t contain the header key Authorization, returns None
