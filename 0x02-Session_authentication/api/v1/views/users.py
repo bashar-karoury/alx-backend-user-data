@@ -25,11 +25,6 @@ def view_one_user(user_id: str = None) -> str:
       - User object JSON represented
       - 404 if the User ID doesn't exist
     """
-    # If <user_id> is equal to me and request.current_user is None: abort(404)
-    # If <user_id> is equal to me and request.current_user is not None: return
-    # the authenticated User in a JSON response
-    # (like a normal case of GET /api/v1/users/<user_id>
-    # where <user_id> is a valid User ID)
     if user_id is None:
         abort(404)
     if user_id == 'me':
