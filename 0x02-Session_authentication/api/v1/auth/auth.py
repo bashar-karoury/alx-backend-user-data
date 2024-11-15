@@ -2,7 +2,7 @@
 """
 auth module to manage API authentication
 """
-import sys
+import os
 from flask import request
 from typing import List, TypeVar
 
@@ -47,5 +47,5 @@ class Auth:
         if not request:
             return None
         # get cookie name
-        cookie_name = sys.getenv('SESSION_NAME')
+        cookie_name = os.getenv('SESSION_NAME')
         return request.cookies.get(cookie_name)
