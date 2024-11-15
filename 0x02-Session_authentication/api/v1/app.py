@@ -59,7 +59,8 @@ def check_authenticaion() -> None:
             '/api/v1/forbidden/',
             '/api/v1/auth_session/login/']):
         return
-    if not auth.authorization_header(request) and not auth.session_cookie(request):
+    if (not auth.authorization_header(request)
+            and not auth.session_cookie(request)):
         abort(401)
 
     print("authorizing current user = ", auth.current_user(request))
