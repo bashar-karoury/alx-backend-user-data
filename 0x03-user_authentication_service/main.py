@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+""" integration test module"""
 import requests
 EMAIL = "guillaume@holberton.io"
 PASSWD = "b4l0u"
