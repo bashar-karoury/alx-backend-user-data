@@ -16,12 +16,9 @@ def simple_route() -> None:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def register_user_route() -> tuple[Any, int]:
+def users() -> tuple[Any, int]:
     form_email = request.form.get('email')
     form_pass = request.form.get('password')
-    # data = request.get_json()
-    # email = data.get('email')
-    # password = data.get('password')
     if not form_email or not form_pass:
         return jsonify({"message": "args provided are incorrect"}), 400
     try:
