@@ -26,7 +26,7 @@ def register_user_route() -> tuple[Any, int]:
         return jsonify({"message": "args provided are incorrect"}), 400
     try:
         user = AUTH.register_user(email=form_email, password=form_pass)
-        return jsonify({"email": form_email, "message": "user created"})
+        return jsonify({"email": form_email, "message": "user created"}), 200
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
 
