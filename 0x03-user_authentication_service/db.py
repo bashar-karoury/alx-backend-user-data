@@ -42,7 +42,7 @@ class DB:
         self._session.commit()
         return user
 
-    def find_user_by(self, *args, **kwargs):
+    def find_user_by(self, *args, **kwargs) -> User:
         """ find first user with provided filter
             arguments
         """
