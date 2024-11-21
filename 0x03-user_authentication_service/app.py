@@ -23,8 +23,8 @@ def users() -> str:
 
     form_email = request.form.get('email')
     form_pass = request.form.get('password')
-    if not form_email or not form_pass:
-        return jsonify({"message": "args provided are incorrect"}), 400
+    # if not form_email or not form_pass:
+    #     return jsonify({"message": "args provided are incorrect"}), 400
     try:
         user = AUTH.register_user(email=form_email, password=form_pass)
         print(user.email)
