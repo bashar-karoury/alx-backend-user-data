@@ -11,7 +11,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/')
-def simple_route() -> None:
+def simple_route() -> str:
     """ simple route for root"""
 
     return jsonify({"message": "Bienvenue"})
