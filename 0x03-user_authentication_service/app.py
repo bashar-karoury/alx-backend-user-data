@@ -18,7 +18,7 @@ def simple_route() -> str:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users() -> tuple[Any, int]:
+def users():
     """ users post route"""
 
     form_email = request.form.get('email')
