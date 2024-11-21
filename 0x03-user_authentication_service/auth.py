@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 """ auth module"""
+import uuid
 import bcrypt
 from db import DB
 from user import User
 from sqlalchemy.orm.exc import NoResultFound
+
+
+def _generate_uuid() -> str:
+    """ generates random number as string """
+    return str(uuid.uuid4())
 
 
 def _hash_password(password: str) -> bytes:
