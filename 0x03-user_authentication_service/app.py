@@ -18,7 +18,7 @@ def simple_route() -> str:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users():
+def users() -> str:
     """ users post route"""
 
     form_email = request.form.get('email')
