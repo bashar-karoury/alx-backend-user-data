@@ -61,7 +61,7 @@ class DB:
     def update_user(self, user_id: int, **kwargs) -> None:
         """updata user given its id and arbitrary attribute"""
         try:
-            user = self.find_user_by(id=id)
+            user = self.find_user_by(id=user_id)
             for k, v in kwargs.items():
                 if not hasattr(User, k):
                     raise ValueError('value error')
