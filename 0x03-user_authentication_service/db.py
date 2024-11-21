@@ -2,6 +2,8 @@
 """DB module
 """
 from sqlalchemy import create_engine
+from sqlalchemy.exc import InvalidRequestError
+from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
@@ -38,4 +40,20 @@ class DB:
         user.hashed_password = hashed_password
         self._session.add(user)
         self._session.commit()
+        return user
+
+    def find_user_by(self, *args, **kwargs):
+        """ find first user with provided filter
+            arguments
+        """
+        # Make sure that SQLAlchemy’s NoResultFound and InvalidRequestError
+        # are raised when no results are found,
+        # or when wrong query arguments are passed, respectively.
+        for k, v in kwargs.items():
+            # print(f'{k}: {v}')
+            if not hasattr(User, k):
+                raise InvalidRequestError(f"Invalid attribute: {k}")
+        user = self._session.query(User).filter_by(**kwargs).first()
+        if user is None:
+            raise NoResultFound("No user found with the given attributes")
         return user
