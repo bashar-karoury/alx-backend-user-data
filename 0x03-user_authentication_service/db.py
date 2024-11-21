@@ -67,6 +67,8 @@ class DB:
                     if not hasattr(User, k):
                         raise ValueError('value error')
                     user.__setattr__(k, v)
-            self._session.commit()
+                self._session.commit()
+            else:
+                raise ValueError
         except ValueError:
             raise ValueError
